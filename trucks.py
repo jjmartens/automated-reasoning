@@ -17,30 +17,30 @@ for t in trucks:
 	for p in packages:
 		weightlimit += " (* B" + str(t) + str(p) + " " + str(weights[p])+ ")"
 	weightlimit += ") 8000)"	
-	print weightlimit
+	print (weightlimit)
 
 for t in  trucks:
 	capacitylimit = "(<= (+"
 	for p in packages:
 		capacitylimit += " B" + str(t) + str(p)
 	capacitylimit += ") 8)"
-	print capacitylimit
+	print (capacitylimit)
 	
 for p in packages:
 	packageconstraint = "(= (+"
 	for t in  trucks:
 		packageconstraint += " B" + str(t) + str(p)
 	packageconstraint += ") " + str(packageconstraints[p]) + ")"
-	print packageconstraint
+	print (packageconstraint)
 
 coolconstraint = "(= (+"
 for t in  trucks:
 	if t >= 3:
 		coolconstraint += " B" + str(t) + str(2)
 coolconstraint += ") 0)"
-print coolconstraint
+print (coolconstraint)
 
 for t in  trucks:
 	print("(<= B" + str(t) + str(0) + " 1)")
 
-print "))"
+print ("))")
