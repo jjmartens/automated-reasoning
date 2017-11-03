@@ -50,24 +50,24 @@ def notOverlaying(i,j):
     return "(or {})".format(" ".join([onLeft(i,j), onLeft(j,i), onTop(i,j), onTop(j,i)]))
 
 def onBoard(i): 
-    return "(<= X{i} {mw}) (>= X{i} 0) (>= Y{i} 0) (<= Y{i} {mh})".format(i=i, mw=MAX_WIDTH, mh=MAX_HEIGHT)
+    return "(<= (+ X{i} W{i}) {mw}) (>= X{i} 0) (>= Y{i} 0) (<= (+ Y{i} H{i}) {mh})".format(i=i, mw=MAX_WIDTH, mh=MAX_HEIGHT)
 
 def allOnBoard():
     return "\n".join([onBoard(i) for i in pieces])
 
 def connectToPower(i):
-    return connectAnyEdge(i,0)
+    return "(or {})".format(" ".join([connectAnyEdge(i,j) for j in power]))
 
 def allRegularConnectingToPower():
     clause = "(and {})".format(" ".join([connectToPower(i) for i in regular]))
     return clause
 
 def distanceOver18(i,j):
-    clause = "(or (<= (+ X{i} X{i} W{i}) (+ X{j} X{j} W{j} 36) (<= (+ Y{i} Y{i} Y{i}) (+ Y{j} Y{j} Y{j} 36)))"
-    return "(or {} {})".format(clause.format(i=i,j=j), clause.format(i=j,j=i))
+    clause = "(or (>= (abs (- (+ X{i} X{i} W{i}) (+ X{j} X{j} W{j}))) 36) (>= (abs (- (+ Y{i} Y{i} H{i}) (+ Y{j} Y{j} H{j}))) 36))"
+    return clause.format(i=i,j=j)
 
 def formula(): 
-    return ":formula (and \n{}\n))".format("".join([declareOrientations(), notOverlayingAny(), allRegularConnectingToPower() , allOnBoard()]))
+    return ":formula (and \n{}\n))".format("".join([declareOrientations(), notOverlayingAny(), allRegularConnectingToPower() ,distanceOver18(0,1),allOnBoard()]))
 
 
 print(declareVars())
