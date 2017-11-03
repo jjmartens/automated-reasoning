@@ -1,10 +1,10 @@
-pieces = range(9)
-power = range(1)
-regular = range(1,5)
-MAX_WIDTH = 6
-MAX_HEIGHT = 6
-widths = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
-heights = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
+pieces = range(12)
+power = range(2)
+regular = range(2,12)
+MAX_WIDTH = 30
+MAX_HEIGHT = 30
+widths = [4,4,4,4,5,6,6,6,7,7,10,10]
+heights = [3,3,5,6,20,9,10,11,8,12,10,20]
 
 def declareVar(i):
     clause = "(X{i} Int) (Y{i} Int) (O{i} Bool) (H{i} Int) (W{i} Int)"
