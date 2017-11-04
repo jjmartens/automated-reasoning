@@ -1,0 +1,13 @@
+MODULE process
+VAR 
+c: 0..400;
+i: 0..20;
+j: 0..20;
+INIT
+i = 1 & j=0 & c = 0;
+TRANS
+case i < 20 : next(i) = i + 1;
+TRUE : next (i) = i; esac & (
+)
+
+LTLSPEC G ( c = 320 ) 
