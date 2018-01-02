@@ -25,4 +25,4 @@ esac) |
 TRUE: next(i) = i & next(j) = j & next(c) = c;
 esac
 )
-LTLSPEC G ( !(c = 281 & i = 21 & j=21) ) 
+LTLSPEC G ( !(c = 331 & i = 21 & j=21) ) 

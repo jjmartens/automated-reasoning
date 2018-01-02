@@ -31,7 +31,7 @@ def allSteps():
     return "\n".join(step(i) for i in pindex)
 
 def endRequirements():
-    return "(= C40 330)"
+    return "(= C40 400)"
 
 def formula(): 
     return ":formula (and \n{}\n))".format("\n".join([initialValues(), bounds(), allSteps(), endRequirements()]))
