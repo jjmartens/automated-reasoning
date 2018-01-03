@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (14,-32.2) circle (3);
+\draw (14,-32.2) node {$q0$};
+\draw [black] (14,-32.2) circle (2.4);
+\draw [black] (37.9,-32.2) circle (3);
+\draw (37.9,-32.2) node {$q1$};
+\draw [black] (53.6,-17.8) circle (3);
+\draw (53.6,-17.8) node {$q2$};
+\draw [black] (26.1,-17.8) circle (3);
+\draw (26.1,-17.8) node {$q4$};
+\draw [black] (36.9,-48) circle (3);
+\draw (36.9,-48) node {$q3$};
+\draw [black] (25.4,-32.2) circle (3);
+\draw (25.4,-32.2) node {$q5$};
+\draw [black] (38.9,-17.8) circle (3);
+\draw (38.9,-17.8) node {$q6$};
+\draw [black] (53.6,-32.2) circle (3);
+\draw (53.6,-32.2) node {$q7$};
+\draw [black] (53.6,-32.2) circle (2.4);
+\draw [black] (16.47,-33.9) -- (34.43,-46.3);
+\fill [black] (34.43,-46.3) -- (34.06,-45.43) -- (33.49,-46.25);
+\draw (24.5,-40.6) node [below] {$a$};
+\draw [black] (34.9,-32.2) -- (28.4,-32.2);
+\fill [black] (28.4,-32.2) -- (29.2,-32.7) -- (29.2,-31.7);
+\draw (31.65,-31.7) node [above] {$a$};
+\draw [black] (40.9,-32.2) -- (50.6,-32.2);
+\fill [black] (50.6,-32.2) -- (49.8,-31.7) -- (49.8,-32.7);
+\draw (45.75,-32.7) node [below] {$a$};
+\draw [black] (39.08,-45.94) -- (51.42,-34.26);
+\fill [black] (51.42,-34.26) -- (50.5,-34.45) -- (51.18,-35.17);
+\draw (46.21,-40.58) node [below] {$a$};
+\draw [black] (29.1,-17.8) -- (35.9,-17.8);
+\fill [black] (35.9,-17.8) -- (35.1,-17.3) -- (35.1,-18.3);
+\draw (32.5,-18.3) node [below] {$a$};
+\draw [black] (35.9,-17.8) -- (29.1,-17.8);
+\fill [black] (29.1,-17.8) -- (29.9,-18.3) -- (29.9,-17.3);
+\draw (32.5,-17.3) node [above] {$a$};
+\draw [black] (41.04,-19.9) -- (51.46,-30.1);
+\fill [black] (51.46,-30.1) -- (51.24,-29.18) -- (50.54,-29.9);
+\draw (45.29,-25.48) node [below] {$a$};
+\draw [black] (53.6,-29.2) -- (53.6,-20.8);
+\fill [black] (53.6,-20.8) -- (53.1,-21.6) -- (54.1,-21.6);
+\draw (54.1,-25) node [right] {$a$};
+\draw [black] (15.93,-29.9) -- (24.17,-20.1);
+\fill [black] (24.17,-20.1) -- (23.27,-20.39) -- (24.04,-21.03);
+\draw (20.6,-26.44) node [right] {$b$};
+\draw [black] (50.6,-17.8) -- (41.9,-17.8);
+\fill [black] (41.9,-17.8) -- (42.7,-18.3) -- (42.7,-17.3);
+\draw (46.25,-17.3) node [above] {$b$};
+\draw [black] (37.09,-45.01) -- (37.71,-35.19);
+\fill [black] (37.71,-35.19) -- (37.16,-35.96) -- (38.16,-36.02);
+\draw (37.99,-40.14) node [right] {$b$};
+\draw [black] (22.4,-32.2) -- (17,-32.2);
+\fill [black] (17,-32.2) -- (17.8,-32.7) -- (17.8,-31.7);
+\draw (19.7,-31.7) node [above] {$b$};
+\draw [black] (36.85,-19.99) -- (27.45,-30.01);
+\fill [black] (27.45,-30.01) -- (28.36,-29.77) -- (27.63,-29.09);
+\draw (31.62,-23.53) node [left] {$b$};
+\draw [black] (4.4,-32.2) -- (11,-32.2);
+\fill [black] (11,-32.2) -- (10.2,-31.7) -- (10.2,-32.7);
+\end{tikzpicture}
+\end{center}
+
+\end{document}

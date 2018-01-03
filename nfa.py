@@ -1,25 +1,55 @@
-states = range(2)
-
+import itertools
+states = range(8)
+letters = ["A","B"]
 
 def declareTransitions():
-    clause = "(A{i}{j} Boolean)(B{i}{j} Boolean)"
+    clause = "(A{i}{j} Bool)(B{i}{j} Bool)"
     return  " ".join([clause.format(i=i,j=j) for i in states for j in states])
 
 
 def declareFinalStates(i):
-    return "(F{i} Boolean)".format(i=i)
+    return "(F{i} Bool)".format(i=i)
 
 def declareVars():
-    clause = "(benchmark villages.smt\n:logic QF_UFLIA\n:extrafuns ({} {})".format(" ".join([declareFinalStates(i) for i in states]), declareTransitions())
+    clause = "(benchmark nfa.smt\n:logic QF_UFLIA\n:extrafuns ({} {})".format(" ".join([declareFinalStates(i) for i in states]), declareTransitions())
     return clause
 
-def transitions(word):
-    clause = "(or (and A01 B11 F1) (and A00 B00 F0) (and A00 B01 F1) (and A01 B10 F0))"
-    
-    return 
+def wordInLanguage(word):
+    clause = "(or "
+    paths = [p for p in itertools.product(states,repeat = len(word))]
+    for p in paths:
+        pathclause = "(and "
+        state = 0 
+        for i in range(len(word)):
+            pathclause += "{l}{state}{i} ".format(l=word[i], state=state,i=p[i])
+            state = p[i]
+        pathclause += " F{state})".format(state=state)
+        clause += pathclause
+    clause += ")"
+    return clause
+
+def wordNotInLanguage(word):
+    clause = "(not {})"
+    return clause.format(wordInLanguage(word))
+
+def allWordRequirements():
+    allcombinations = []
+    for i in range(1,5):
+        allcombinations.extend([p for p in itertools.product("AB",repeat = i)])
+    requirements = "(and "
+    for word in allcombinations:
+        if word == ('A', 'A') or word == ('A', 'B', 'A') or word == ('B', 'A', 'A') or word == ('A', 'B','A','B') or word == ('B', 'A','B','B'):
+            requirements += wordInLanguage(word)
+        else:
+            requirements += wordNotInLanguage(word)
+    requirements += wordInLanguage("AAABA")
+    requirements += wordInLanguage("BAAAA")
+    requirements += wordNotInLanguage("ABAAA")
+
+    return requirements
 
 def formula(): 
-    return ":formula (and \n{}\n))".format("".join([allCorrect(), initialState(), allTransitions()]))
+    return ":formula (and \n{}\n))".format("".join([allWordRequirements()]))
 
 print(declareVars())
 print(formula())
