@@ -13,7 +13,7 @@ def allCorrect():
     return "\n".join([clause.format(i=i) for i in range(time)])
 
 def transition(a,b,i):
-    return "(and (= X{a}{i} 0)(= X{b}{inext} 0)(= X{a}{inext} X{b}{i})) ".format(a=b,b=a,i=i,inext=i+1)
+    return "(and (= X{b}{i} 0)(= X{a}{inext} 0)(= X{b}{inext} X{a}{i})) ".format(a=a,b=b,i=i,inext=i+1)
 
 def singleTransition(i):
     clause = "(and "
@@ -38,7 +38,7 @@ def goal():
     clause += "\n".join(["(and (= X0{max} 1)(= X1{max} 2)(= X2{max} 3)(= X3{max} 4) (= X4{max} 5)(= X5{max} 6) (= X6{max} 7) (=X7{max} 8) (= X8{max} 0))".format(max=i) for i in range(time)])
     return clause + ")"
 def formula(): 
-    return ":formula (and \n{}\n)".format("".join([allTransitions(), initial(), goal()]))
+    return ":formula (and \n{}\n)".format("".join([allTransitions(), allCorrect(), initial(), goal()]))
 
 
 print(declareVars())

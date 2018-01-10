@@ -1,5 +1,5 @@
 import itertools
-states = range(8)
+states = range(7)
 letters = ["A","B"]
 
 def declareTransitions():
